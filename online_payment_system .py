@@ -3,7 +3,7 @@ class online_payment_system:
         self.balance = balance
         self.correct_pin = "1221"
 
-    def deposit(self,amount):
+    def deposit(self,amount):  # To Deposit money in Account
         while True:
             pin2 = input("Enter Pin :")
             if pin2 == self.correct_pin:
@@ -17,7 +17,7 @@ class online_payment_system:
             else:
                 print("Incorrect Pin  ❌")
 
-    def check_Balance(self):
+    def check_Balance(self): #To check Balance
         while True:
             pin3 = input("Enter Pin :")
             if pin3 == self.correct_pin:
@@ -26,7 +26,7 @@ class online_payment_system:
             else:
                 print("Incorrect Pin  ❌")
 
-    def send_money(self):
+    def send_money(self):  # To send Money
         while True:
             while True:
                 mob_no = (input("Enter Mobile Number :"))
@@ -35,21 +35,21 @@ class online_payment_system:
                 else:
                     break
             money_to_send = float(input("Enter amount To send :"))
-            pin4 = input("Enter Pin :")
-            if pin4 == self.correct_pin:
-                if money_to_send > self.balance:
-                    print("InSufficient Balance !!")
-                elif money_to_send < 0:
-                    print("Enter a Postive Amount")
-                else:
+             # allow 3 attempts for pin
+            for attempt in range(3):
+                pin4 = input("Enter PIN: ")
+                if pin4 == self.correct_pin:
                     self.balance -= money_to_send
-                    print("Payment Done Successfully")
-                    print(f"Remaninig Balance : ₹{self.balance}")
-            else:
-                print("Incorrect Pin  ❌") 
-                break
+                    print("✅ Payment Done Successfully")
+                    print(f"Remaining Balance: ₹{self.balance}")
+                    return
+                else:
+                    print(f"Incorrect PIN ❌ ({2 - attempt} attempts left)")
         
-    def run_system(self):
+            print("❌ Transaction Failed: Too many incorrect PIN attempts.")
+            return
+        
+    def run_system(self):  # To Run This overall Sytem
         while True:
             print("\n---ONLINE PAYMENT SYSTEM---")
             print("\n1.Send Money")
