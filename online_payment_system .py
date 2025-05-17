@@ -72,7 +72,7 @@ class online_payment_system:
             else:
                 print("Invalid Input ❌ ")
 
-    def open_system(self):  
+    def open_system(self):  #To open This system
         while True:
             pass1 = input("Enter Pin To Open To system :")
             if pass1 == self.correct_pin :
